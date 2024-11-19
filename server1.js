@@ -19,7 +19,7 @@ app.use((req, res, next) => {
 });
 
 // MongoDB connection
-const mongoURL = "mongodb+srv://admin:MDX2025@twitterclonecluster.b826976.mongodb.net/"; // Update with your credentials
+const mongoURL = "mongodb link"; // Update with your credentials
 const client = new MongoClient(mongoURL);
 let db;
 
