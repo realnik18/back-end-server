@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch POST Example</title>
+</head>
+
+<body>
+    <p>Add a new product to the <code>testdata</code> collection</p>
+    <code>{title: 'new product', price: 49}</code>
+    <p>The response: <span id="response"></span></p>
+    <p>Error: <span id="error"></span></p>
+
+    <script>
+        const newProduct = {
+            title: 'new product',
+            price: 49,
+        };
+
+        // Update the URL to point to your API endpoint
+        fetch('http://localhost:3000/collection/testdata', {
+            method: 'POST', // Use the POST method
+            headers: {
+                'Content-Type': 'application/json', // Specify JSON content type
+            },
+            body: JSON.stringify(newProduct), // Convert the object to a JSON string
+        })
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then((responseJSON) => {
+                // Display the server's response
+                document.getElementById('response').innerText = JSON.stringify(responseJSON, null, 2);
+            })
+            .catch((error) => {
+                // Display any errors that occur
+                document.getElementById('error').innerText = error.message;
+            });
+    </script>
+</body>
+
+</html>
